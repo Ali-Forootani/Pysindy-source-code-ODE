@@ -36,7 +36,6 @@ integrator_keywords["method"] = "LSODA"
 integrator_keywords["atol"] = 1e-12
 
 
-
 def lorenz(t, x, sigma=10, beta=2.66667, rho=28):
     return [
         sigma * (x[1] - x[0]),
@@ -49,8 +48,6 @@ def cubic_oscillator(t, x, p=[-0.1, 2, -2, -0.1]):
     return [p[0] * x[0] ** 3 + p[1] * x[1] ** 3, p[2] * x[0] ** 3 + p[3] * x[1] ** 3]
 
 
-
-
 # Generate measurement data
 dt = 0.0005
 t_train = np.arange(0, 10, dt)
@@ -61,15 +58,11 @@ u_train = solve_ivp(
 ).y.T
 
 
-
-
-
 # Instantiate and fit the SINDy model with u_dot
 u_dot = ps.FiniteDifference()._differentiate(u_train, t=dt)
 model = ps.SINDy()
 model.fit(u_train, x_dot=u_dot, t=dt)
 model.print()
-
 # Define weak form ODE library
 # defaults to derivative_order = 0 if not specified,
 # and if spatial_grid is not specified, defaults to None,
@@ -99,14 +92,6 @@ for param_name, param in parameters.items():
 """
 
 
-
-
-print("88888888888888888888888888888888888888")
-print("88888888888888888888888888888888888888")
-print("88888888888888888888888888888888888888")
-
-
-
 optimizer = SR3(
     threshold=0.1, thresholder="l0", normalize_columns=True, max_iter=1000, tol=1e-8
 )
@@ -117,11 +102,6 @@ model.fit(u_train)
 model.print()
 
 
-
-
-print("88888888888888888888888888888888888888")
-print("88888888888888888888888888888888888888")
-print("88888888888888888888888888888888888888")
 
 
 import numpy as np
