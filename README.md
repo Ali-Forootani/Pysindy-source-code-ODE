@@ -13,7 +13,7 @@ This package provides a user-friendly interface for using SINDy in Python. It su
 # Let's see the example
  Here's a breakdown of the code:
 
-    1. Importing the required libraries and modules:
+1. Importing the required libraries and modules:
    ```python
 import matplotlib.pyplot as plt
 import numpy as np
@@ -26,3 +26,19 @@ from weak_pde_library import WeakPDELibrary
 from sr3_class import SR3
 import inspect
    ```
+2. Defining the Lorenz system and cubic oscillator ODEs:
+```python
+def lorenz(t, x, sigma=10, beta=2.66667, rho=28):
+    # Lorenz system equations
+
+def cubic_oscillator(t, x, p=[-0.1, 2, -2, -0.1]):
+    # Cubic oscillator equations
+```
+3. Generating measurement data using the Lorenz system:
+```python
+dt = 0.0005
+t_train = np.arange(0, 10, dt)
+t_train_span = (t_train[0], t_train[-1])
+u0_train = [-8, 8, 27]
+u_train = solve_ivp(lorenz, t_train_span, u0_train, t_eval=t_train, **integrator_keywords).y.T
+```
