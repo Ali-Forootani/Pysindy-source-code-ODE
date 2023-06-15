@@ -32,9 +32,8 @@ def lorenz(t, x, sigma=10, beta=2.66667, rho=28):
     return [
         sigma * (x[1] - x[0]),
         x[0] * (rho - x[2]) - x[1],
-        x[0] * x[1] - beta * x[2],
-    ]
-
+        x[0] * x[1] - beta * x[2],]
+        
 def cubic_oscillator(t, x, p=[-0.1, 2, -2, -0.1]):
     return [p[0] * x[0] ** 3 + p[1] * x[1] ** 3, p[2] * x[0] ** 3 + p[3] * x[1] ** 3]
 ```
