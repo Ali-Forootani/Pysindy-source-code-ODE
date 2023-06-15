@@ -14,7 +14,8 @@ This package provides a user-friendly interface for using SINDy in Python. It su
  Here's a breakdown of the code:
 
     1. Importing the required libraries and modules:
-    `python import matplotlib.pyplot as plt
+   ```python
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import solve_ivp
 from sklearn.linear_model import Lasso
@@ -24,4 +25,4 @@ import pysindy as ps
 from weak_pde_library import WeakPDELibrary
 from sr3_class import SR3
 import inspect
-'
+   ```
