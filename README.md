@@ -2,7 +2,9 @@
 
 I was asked to use weak sindy algorithm to identify lorenz system from data. 
 however the original pysindy library had some bugs, so it obliged me to go to its details and
-excavate the library. if you want to run one simulation you can run `example_weak_ode_2.p`.
+excavate the library. If you want to run one simulation you can run `example_weak_ode_2.p`.
+
+Important notice: the PySINDy package has a lot of bugs! so I imported the modules seperately! you can find the list of modules in the snapshot below!
 
 # What is PySINDy?
 
@@ -11,6 +13,9 @@ PySINDy is a Python package for the sparse identification of nonlinear dynamical
 This package provides a user-friendly interface for using SINDy in Python. It supports both continuous and discrete-time data, and offers various algorithms for model discovery and equation learning. PySINDy also includes additional features such as noise handling, cross-validation, custom library functions, and model selection.
 
 # Let's see the example
+
+
+
  Here's a breakdown of the code:
 
 1. Importing the required libraries and modules:
