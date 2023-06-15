@@ -14,7 +14,7 @@ This package provides a user-friendly interface for using SINDy in Python. It su
  Here's a breakdown of the code:
 
 1. Importing the required libraries and modules:
-   ```python
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import solve_ivp
@@ -25,7 +25,11 @@ import pysindy as ps
 from weak_pde_library import WeakPDELibrary
 from sr3_class import SR3
 import inspect
-   ```
+```
+
+
+
+
 2. Defining the Lorenz system and cubic oscillator ODEs:
 ```python
 def lorenz(t, x, sigma=10, beta=2.66667, rho=28):
