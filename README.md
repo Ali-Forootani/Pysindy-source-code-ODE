@@ -49,3 +49,26 @@ t_train_span = (t_train[0], t_train[-1])
 u0_train = [-8, 8, 27]
 u_train = solve_ivp(lorenz, t_train_span, u0_train, t_eval=t_train, **integrator_keywords).y.T
 ```
+4. Fitting the SINDy model to the data:
+
+```python
+u_dot = ps.FiniteDifference()._differentiate(u_train, t=dt)
+model = ps.SINDy()
+model.fit(u_train, x_dot=u_dot, t=dt)
+model.print()
+```
+5. Defining a weak form ODE library and initializing the SR3 optimizer:
+
+```python
+library_functions = [lambda x: x, lambda x: x * x, lambda x, y: x * y]
+library_function_names = [lambda x: x, lambda x: x + x, lambda x, y: x + y]
+ode_lib = WeakPDELibrary(library_functions=library_functions, function_names=library_function_names, spatiotemporal_grid=t_train, is_uniform=True, K=20000)
+optimizer = SR3(threshold=0.1, thresholder="l0", normalize_columns=True, max_iter=1000, tol=1e-8)
+```
+6. Fitting the SINDy model using the weak form ODE library and the SR3 optimizer:
+
+```python
+model = ps.SINDy(feature_library=ode_lib, optimizer=optimizer)
+model.fit(u_train)
+model.print()
+```
